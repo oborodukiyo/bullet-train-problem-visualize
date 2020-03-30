@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900|Noto+Sans+JP:400,700,900|Noto+Serif+JP:400,700,900|PT+Sans:400,700|PT+Serif:400,700&display=swap" rel="stylesheet">
+
+    <title>Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+</head>
+<body>
+
+<div class="chart" style="width:1024px;">
+    <canvas id="chart1"></canvas>
+</div>
+<script>
+    Chart.defaults.global.defaultFontColor = '#333333'; // ディフォルトの文字色
+    Chart.defaults.global.defaultFontFamily = "'Noto Sans JP','Lato"; // ディフォルトのフォントファミリー
+
+    var ctx = document.getElementById('chart1').getContext('2d'); //canvasを取得
+    var chart = new Chart(ctx, {
+        // チャートの設定
+        type: 'line',
+        data: {
+            labels:['$230','$240','$250','$260','$270'],
+            datasets:[{
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderWidth: 2,
+                borderColor: 'rgb(54, 162, 235)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#ffffff',
+                pointRadius: 5,
+                data:[164000,157000,150000,143000,136000]
+            }]
+        },
+        options: {
+            scales: {
+                // 軸の設定
+                yAxes: [{
+                    // y軸の設定
+                    scaleLabel: {
+                        // y軸ラベル
+                        display: true,
+                        labelString: '利用者数',
+                        fontSize: 14,
+                        fontStyle: 'bold'
+                    },
+                    gridLines: {},
+                    ticks: {
+                        max: 170000,
+                        min: 120000,
+                        stepSize: 10000,
+                        fontSize: 14,
+                        fontStyle: 'bold'
+                    }
+                }],
+                xAxes: [{
+                    // x軸の設定
+                    scaleLabel: {
+                        // x軸ラベル
+                        display: true,
+                        labelString: '料金',
+                        fontSize: 14,
+                        fontStyle: 'bold'
+                    },
+                    gridLines: {},
+                    ticks: {
+                        fontSize: 14,
+                        fontStyle: 'bold'
+                    }
+                }]
+            },
+            tooltips: {
+                // ツールチップ（マウスオーバーしたときに出てくるやつ）の設定
+                displayColors: false
+            },
+            layout: {
+                // グラフのレイアウト
+              padding: {
+                  top: 0,
+                  left: 200,
+                  bottom: 0,
+                  right: 200
+              }
+            },
+            legend: {
+                // 凡例
+                display: false
+            },
+            title: {
+                // グラフタイトル
+                position:'bottom',
+                padding: 24,
+                fontSize: 18,
+                display: true,
+                text: '新幹線の7daysパス料金と利用者数'
+            }
+        }
+    });
+</script>
+
+
+
+</body>
+</html>
